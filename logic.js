@@ -30,19 +30,21 @@ var highBidder = initialBidder;
 database.ref().on("value", function(snapshot) {
 
   // If Firebase has a highPrice and highBidder stored (first case)
-  if (snapshot.child("highBidder").exists() && snapshot.child("highPrice").exists()) {
+  if (snapshot.child("name").exists() && snapshot.child("bid").exists()) {
 
     // Set the variables for highBidder/highPrice equal to the stored values in firebase.
     // highPrice = ...
-    highPrice
-    // highBidder = ...
+    highPrice = snapshot.val().bid
+    highBidder = snapshot.val().name
 
 
     // Change the HTML to reflect the stored values
-
+    $("#highest-bidder").text(highBidder)
+    $("#highest-price").text(highPrice)
 
     // Print the data to the console.
-
+    console.log(highPrice);
+    console.log(highBidder);
 
   }
 
