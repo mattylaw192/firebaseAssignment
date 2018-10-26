@@ -1,4 +1,13 @@
 // Initialize Firebase
+var config = {
+  apiKey: "AIzaSyALS2D1renxnfGnVB08MPhz_iiNtCtEldg",
+  authDomain: "coder-bay-92d41.firebaseapp.com",
+  databaseURL: "https://coder-bay-92d41.firebaseio.com",
+  projectId: "coder-bay-92d41",
+  storageBucket: "coder-bay-92d41.appspot.com",
+  messagingSenderId: "403408468851"
+};
+firebase.initializeApp(config);
 // Make sure to match the configuration to the script version number in the HTML
 // (Ex. 3.0 != 3.7.0)
 
