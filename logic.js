@@ -14,6 +14,7 @@ firebase.initializeApp(config);
 
 // Assign the reference to the database to a variable named 'database'
 // var database = ...
+var database = firebase.database();
 
 
 // Initial Values
@@ -33,6 +34,7 @@ database.ref().on("value", function(snapshot) {
 
     // Set the variables for highBidder/highPrice equal to the stored values in firebase.
     // highPrice = ...
+    highPrice
     // highBidder = ...
 
 
@@ -69,7 +71,11 @@ $("#submit-bid").on("click", function(event) {
   event.preventDefault();
 
   // Get the input values
+var bidderName = $("#bidder-name").val()
+var bidderPrice = $("#bidder-price").val()
 
+console.log(bidderName);
+console.log(bidderPrice);
 
   // Log the Bidder and Price (Even if not the highest)
   if (bidderPrice > highPrice) {
@@ -78,16 +84,21 @@ $("#submit-bid").on("click", function(event) {
     alert("You are now the highest bidder.");
 
     // Save the new price in Firebase
-
+    database.ref().set({
+      name: bidderName,
+      bid: bidderPrice
+    });
 
     // Log the new High Price
 
 
     // Store the new high price and bidder name as a local variable
-
+    var newHighPrice = bidderPrice;
+    var newHighBidder = bidderName;
 
     // Change the HTML to reflect the new high price and bidder
-
+    $("#highest-bidder").text(bidderName);
+    $("#highest-price").text(bidderPrice);
   }
 
   else {
